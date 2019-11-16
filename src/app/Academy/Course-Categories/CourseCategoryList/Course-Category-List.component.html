@@ -1,0 +1,16 @@
+<button kendoButton (click)="addroot()"> اضافه کردن ریشه</button>
+<div kendoDialogContainer></div>
+<kendo-treeview
+  [nodes]="CourseCategories"
+  textField="title"
+  kendoTreeViewExpandable
+  kendoTreeViewSelectable
+  kendoTreeViewHierarchyBinding
+  childrenField="children"
+>
+  <ng-template kendoTreeViewNodeTemplate let-dataItem>
+    <span style="color:deepskyblue" >{{dataItem.title}}</span>
+    <span class="k-icon k-i-edit pointer" (click)="editing(dataItem)" ></span>
+<span *ngIf="dataItem.children==null" class="k-icon k-i-delete pointer" (click)="deleting(dataItem)" ></span>
+  </ng-template>
+</kendo-treeview>

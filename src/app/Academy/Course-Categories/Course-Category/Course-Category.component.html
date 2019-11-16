@@ -1,0 +1,17 @@
+<form #courseform="ngForm">
+  <div class="pointer" #mydiv>
+    <label  for="title" >عنوان</label>
+    <input type="text" id="title" name="title" [(ngModel)]="model.title" minlength="3" required #title="ngModel"/>
+
+    {{model.title}}
+   {{mydiv.className}}
+    <span [hidden]="title.pristine">
+          <span style="color:red" [hidden]="!title.errors?.required">الزامی است</span>
+          <span style="color:red" [hidden]="!title.errors?.minlength">طول از 3 کاراکتر کمتر است</span>
+      {{title.valid}}
+    </span>
+
+  </div>
+  <button kendoButton (click)="save()" [disabled]="courseform.invalid">save</button>
+  {{courseform.valid}}
+</form>
